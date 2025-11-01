@@ -1,4 +1,5 @@
 import { Check } from "lucide-react";
+import teyaTerminal from "@/assets/teya-terminal.png";
 
 const benefits = [
   "Bez ugovorne obveze!",
@@ -43,20 +44,12 @@ export const Benefits = () => {
           </div>
           
           <div className="relative">
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-primary via-primary-glow to-secondary p-1">
-              <div className="w-full h-full rounded-3xl bg-background flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl md:text-8xl font-bold bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent mb-4">
-                    100%
-                  </div>
-                  <div className="text-2xl md:text-3xl font-semibold text-foreground mb-2">
-                    Posvećenost
-                  </div>
-                  <div className="text-muted-foreground text-lg">
-                    Vašem Uspjehu
-                  </div>
-                </div>
-              </div>
+            <div className="rounded-3xl overflow-hidden shadow-2xl">
+              <img 
+                src={teyaTerminal} 
+                alt="Teya payment terminal" 
+                className="w-full h-auto"
+              />
             </div>
             
             <div className="absolute -top-4 -right-4 w-24 h-24 bg-secondary rounded-2xl opacity-20 blur-2xl" />
