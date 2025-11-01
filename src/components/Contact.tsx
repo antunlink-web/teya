@@ -46,28 +46,40 @@ export const Contact = () => {
       
       setIsSubmitting(true);
       
-      // Create WhatsApp message with form data
-      const message = `Nova poruka sa kontakt forme:\n\nIme: ${validatedData.name}\nEmail: ${validatedData.email}\nTelefon: ${validatedData.phone}\n\nPoruka:\n${validatedData.message}`;
-      
-      // WhatsApp business number (replace with your actual number, format: country code + number without + or spaces)
-      const phoneNumber = "385XXXXXXXXX";
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-      
-      // Open WhatsApp in new tab
-      window.open(whatsappUrl, '_blank');
-      
-      toast({
-        title: "WhatsApp se otvara!",
-        description: "Vaša poruka je spremna za slanje putem WhatsAppa.",
+      // Web3Forms API endpoint
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your actual Web3Forms access key
+          name: validatedData.name,
+          email: validatedData.email,
+          phone: validatedData.phone,
+          message: validatedData.message,
+        }),
       });
-      
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Uspešno poslato!",
+          description: "Primili smo vašu poruku i odgovorićemo uskoro.",
+        });
+        
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+      } else {
+        throw new Error("Form submission failed");
+      }
       
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -87,7 +99,7 @@ export const Contact = () => {
       } else {
         toast({
           title: "Greška",
-          description: "Došlo je do greške. Molimo pokušajte kasnije.",
+          description: "Došlo je do greške prilikom slanja. Molimo pokušajte kasnije.",
           variant: "destructive",
         });
       }
