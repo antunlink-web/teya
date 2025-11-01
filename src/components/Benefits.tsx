@@ -21,7 +21,7 @@ export const Benefits = () => {
               Zašto Odabrati Nas
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Vaš Pouzdani Partner za Digitalni Uspjeh
+              Dizajnirano za biznis
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
               Kao ekskluzivni Teya partner, donosimo vam vrhunsku podršku, 
