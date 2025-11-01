@@ -54,7 +54,7 @@ export const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your actual Web3Forms access key
+          access_key: "7a6fbce5-f71b-4f52-a58e-12bcbbd3a492", // Replace with your actual Web3Forms access key
           name: validatedData.name,
           email: validatedData.email,
           phone: validatedData.phone,
