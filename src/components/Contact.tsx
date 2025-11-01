@@ -3,8 +3,94 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2, "Ime mora imati najmanje 2 znaka").max(100, "Ime može imati najviše 100 znakova"),
+  email: z.string().trim().email("Unesite valjanu email adresu").max(255, "Email može imati najviše 255 znakova"),
+  phone: z.string().trim().min(6, "Unesite valjan telefonski broj").max(20, "Telefonski broj može imati najviše 20 znakova"),
+  message: z.string().trim().min(10, "Poruka mora imati najmanje 10 znakova").max(1000, "Poruka može imati najviše 1000 znakova"),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export const Contact = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState<ContactFormData>({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState<Partial<Record<keyof ContactFormData, string>>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setErrors({});
+    
+    try {
+      // Validate form data
+      const validatedData = contactSchema.parse(formData);
+      
+      setIsSubmitting(true);
+      
+      // Simulate API call (replace with actual backend call when ready)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      console.log("Form submitted:", validatedData);
+      
+      toast({
+        title: "Hvala na poruci!",
+        description: "Kontaktirat ćemo vas u najkraćem mogućem roku.",
+      });
+      
+      // Reset form
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+      
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
+        error.errors.forEach(err => {
+          if (err.path[0]) {
+            fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
+          }
+        });
+        setErrors(fieldErrors);
+        
+        toast({
+          title: "Greška u formi",
+          description: "Molimo provjerite unesene podatke i pokušajte ponovno.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Greška",
+          description: "Došlo je do greške. Molimo pokušajte kasnije.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
@@ -51,37 +137,84 @@ export const Contact = () => {
         </div>
         
         <Card className="max-w-3xl mx-auto mt-12 p-8 md:p-12 border-2">
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Ime i Prezime</label>
-                <Input placeholder="Vaše ime" className="h-12" />
+                <label htmlFor="name" className="text-sm font-medium text-foreground mb-2 block">
+                  Ime i Prezime *
+                </label>
+                <Input 
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Vaše ime" 
+                  className={`h-12 ${errors.name ? 'border-destructive' : ''}`}
+                />
+                {errors.name && (
+                  <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                )}
               </div>
               <div>
-                <label className="text-sm font-medium text-foreground mb-2 block">Email</label>
-                <Input type="email" placeholder="vas@email.hr" className="h-12" />
+                <label htmlFor="email" className="text-sm font-medium text-foreground mb-2 block">
+                  Email *
+                </label>
+                <Input 
+                  id="email"
+                  name="email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="vas@email.hr" 
+                  className={`h-12 ${errors.email ? 'border-destructive' : ''}`}
+                />
+                {errors.email && (
+                  <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                )}
               </div>
             </div>
             
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">Telefon</label>
-              <Input placeholder="+385" className="h-12" />
+              <label htmlFor="phone" className="text-sm font-medium text-foreground mb-2 block">
+                Telefon *
+              </label>
+              <Input 
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                placeholder="+385" 
+                className={`h-12 ${errors.phone ? 'border-destructive' : ''}`}
+              />
+              {errors.phone && (
+                <p className="text-sm text-destructive mt-1">{errors.phone}</p>
+              )}
             </div>
             
             <div>
-              <label className="text-sm font-medium text-foreground mb-2 block">Poruka</label>
+              <label htmlFor="message" className="text-sm font-medium text-foreground mb-2 block">
+                Poruka *
+              </label>
               <Textarea 
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Kako vam možemo pomoći?" 
-                className="min-h-[150px] resize-none"
+                className={`min-h-[150px] resize-none ${errors.message ? 'border-destructive' : ''}`}
               />
+              {errors.message && (
+                <p className="text-sm text-destructive mt-1">{errors.message}</p>
+              )}
             </div>
             
             <Button 
               type="submit" 
-              size="lg" 
-              className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity text-lg h-14 group"
+              size="lg"
+              disabled={isSubmitting}
+              className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity text-lg h-14 group disabled:opacity-50"
             >
-              Pošaljite Upit
+              {isSubmitting ? "Šalje se..." : "Pošaljite Upit"}
               <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>
