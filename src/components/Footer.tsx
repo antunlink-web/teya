@@ -15,25 +15,6 @@ export const Footer = () => {
               Ekskluzivni partner za Teya plaćanja u Hrvatskoj. Pomažemo poduzećima da ostvare svoj puni potencijal kroz moderna platna rješenja.
             </p>
           </div>
-          
-          <div>
-            <h4 className="font-semibold text-foreground mb-4">Brzi Linkovi</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">O Nama</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Rješenja</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Kontakt</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="font-semibold text-foreground mb-4">Pravno</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">Uvjeti Korištenja</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Privatnost</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Kolačići</a></li>
-            </ul>
-          </div>
         </div>
         
         <Separator className="my-8" />
