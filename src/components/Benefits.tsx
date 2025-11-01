@@ -24,8 +24,7 @@ export const Benefits = () => {
               Dizajnirano za biznis
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Kao ekskluzivni Teya partner, donosimo vam vrhunsku podršku, 
-              stručnost i lokalno znanje za maksimalan uspjeh vašeg poslovanja.
+              Više prodaje, manje gnjavaže.
             </p>
             
             <div className="space-y-4">
