@@ -43,8 +43,8 @@ export const Benefits = () => {
             </div>
           </div>
           
-          <div className="relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
+          <div className="relative flex justify-center">
+            <div className="rounded-3xl overflow-hidden shadow-2xl w-3/5">
               <img 
                 src={teyaTerminal} 
                 alt="Teya payment terminal" 
