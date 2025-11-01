@@ -46,14 +46,19 @@ export const Contact = () => {
       
       setIsSubmitting(true);
       
-      // Simulate API call (replace with actual backend call when ready)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Create WhatsApp message with form data
+      const message = `Nova poruka sa kontakt forme:\n\nIme: ${validatedData.name}\nEmail: ${validatedData.email}\nTelefon: ${validatedData.phone}\n\nPoruka:\n${validatedData.message}`;
       
-      console.log("Form submitted:", validatedData);
+      // WhatsApp business number (replace with your actual number, format: country code + number without + or spaces)
+      const phoneNumber = "385XXXXXXXXX";
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      
+      // Open WhatsApp in new tab
+      window.open(whatsappUrl, '_blank');
       
       toast({
-        title: "Hvala na poruci!",
-        description: "Kontaktirat ćemo vas u najkraćem mogućem roku.",
+        title: "WhatsApp se otvara!",
+        description: "Vaša poruka je spremna za slanje putem WhatsAppa.",
       });
       
       // Reset form
