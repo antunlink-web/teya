@@ -1,14 +1,15 @@
 import { Check } from "lucide-react";
 
 const benefits = [
-  "Ekskluzivna podrška certificiranih Teya stručnjaka",
-  "Personalizirane obuke za vaš tim",
-  "Brza implementacija i postavljanje",
-  "Povoljni uvjeti i fleksibilni paketi",
-  "Dedicirani account manager",
-  "Stalna tehnička podrška 24/7",
-  "Redoviti update-i i nova funkcionalnost",
-  "Lokalna podrška na hrvatskom jeziku",
+  "Bez ugovorne obveze!",
+  "Bez mjesečne naknade!",
+  "Najniža provizija po transakciji",
+  "Napojnice",
+  "Ubrzajte proces kupnje",
+  "Novac sjeda na Vaš račun idući radni dan",
+  "Pay by link - slanje poveznica za plaćanje",
+  "Analitika u stvarnom vremenu",
+  "Lokalna podrška",
 ];
 
 export const Benefits = () => {
