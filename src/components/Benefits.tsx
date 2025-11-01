@@ -8,8 +8,6 @@ const benefits = [
   "Ubrzajte proces kupnje",
   "Novac sjeda na Vaš račun idući radni dan",
   "Pay by link - slanje poveznica za plaćanje",
-  "Analitika u stvarnom vremenu",
-  "Lokalna podrška",
 ];
 
 export const Benefits = () => {
