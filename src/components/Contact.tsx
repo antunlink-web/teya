@@ -6,26 +6,21 @@ import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { z } from "zod";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(2, "Ime mora imati najmanje 2 znaka").max(100, "Ime može imati najviše 100 znakova"),
-  email: z.string().trim().email("Unesite valjanu email adresu").max(255, "Email može imati najviše 255 znakova"),
-  phone: z
-    .string()
-    .trim()
-    .min(6, "Unesite valjan telefonski broj")
-    .max(20, "Telefonski broj može imati najviše 20 znakova"),
-  message: z
-    .string()
-    .trim()
-    .min(10, "Poruka mora imati najmanje 10 znakova")
-    .max(1000, "Poruka može imati najviše 1000 znakova"),
-});
-
-type ContactFormData = z.infer<typeof contactSchema>;
+import { useTranslation } from "react-i18next";
 
 export const Contact = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
+  
+  const contactSchema = z.object({
+    name: z.string().trim().min(2, t('contact.form.nameError')).max(100),
+    email: z.string().trim().email(t('contact.form.emailError')).max(255),
+    phone: z.string().trim().min(6, t('contact.form.phoneError')).max(20),
+    message: z.string().trim().min(10, t('contact.form.messageError')).max(1000),
+  });
+
+  type ContactFormData = z.infer<typeof contactSchema>;
+
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -38,7 +33,6 @@ export const Contact = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof ContactFormData]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -49,12 +43,9 @@ export const Contact = () => {
     setErrors({});
 
     try {
-      // Validate form data
       const validatedData = contactSchema.parse(formData);
-
       setIsSubmitting(true);
 
-      // Web3Forms API endpoint
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -62,7 +53,7 @@ export const Contact = () => {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "7a6fbce5-f71b-4f52-a58e-12bcbbd3a492", // Replace with your actual Web3Forms access key
+          access_key: "7a6fbce5-f71b-4f52-a58e-12bcbbd3a492",
           name: validatedData.name,
           email: validatedData.email,
           phone: validatedData.phone,
@@ -74,11 +65,10 @@ export const Contact = () => {
 
       if (result.success) {
         toast({
-          title: "Uspešno poslato!",
-          description: "Primili smo vašu poruku i odgovorićemo uskoro.",
+          title: t('contact.form.successTitle'),
+          description: t('contact.form.successDescription'),
         });
 
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -99,14 +89,14 @@ export const Contact = () => {
         setErrors(fieldErrors);
 
         toast({
-          title: "Greška u formi",
-          description: "Molimo provjerite unesene podatke i pokušajte ponovno.",
+          title: t('contact.form.formErrorTitle'),
+          description: t('contact.form.formErrorDescription'),
           variant: "destructive",
         });
       } else {
         toast({
-          title: "Greška",
-          description: "Došlo je do greške prilikom slanja. Molimo pokušajte kasnije.",
+          title: t('contact.form.errorTitle'),
+          description: t('contact.form.errorDescription'),
           variant: "destructive",
         });
       }
@@ -120,13 +110,13 @@ export const Contact = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-            Kontaktirajte Nas
+            {t('contact.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Započnite Svoju Digitalnu Transformaciju
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Naš tim je spreman odgovoriti na sva vaša pitanja i pomoći vam odabrati najbolje rješenje
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -135,7 +125,7 @@ export const Contact = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <Phone className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Telefon</h3>
+            <h3 className="text-xl font-bold text-foreground mb-2">{t('contact.phone')}</h3>
             <a href="tel:+385993261222" className="text-primary hover:underline text-lg">
               +385 99 326 1222
             </a>
@@ -145,7 +135,7 @@ export const Contact = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <Mail className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Email</h3>
+            <h3 className="text-xl font-bold text-foreground mb-2">{t('contact.email')}</h3>
             <a href="mailto:primelink@primelink.hr" className="text-primary hover:underline text-lg">
               primelink@primelink.hr
             </a>
@@ -155,8 +145,8 @@ export const Contact = () => {
             <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
               <MapPin className="w-8 h-8 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-foreground mb-2">Adresa</h3>
-            <p className="text-muted-foreground text-lg">Tarska 26a, Zagreb, Hrvatska</p>
+            <h3 className="text-xl font-bold text-foreground mb-2">{t('contact.address')}</h3>
+            <p className="text-muted-foreground text-lg">{t('contact.addressValue')}</p>
           </Card>
         </div>
 
@@ -165,21 +155,21 @@ export const Contact = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label htmlFor="name" className="text-sm font-medium text-foreground mb-2 block">
-                  Ime i Prezime *
+                  {t('contact.form.name')} *
                 </label>
                 <Input
                   id="name"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  placeholder="Vaše ime"
+                  placeholder={t('contact.form.namePlaceholder')}
                   className={`h-12 ${errors.name ? "border-destructive" : ""}`}
                 />
                 {errors.name && <p className="text-sm text-destructive mt-1">{errors.name}</p>}
               </div>
               <div>
                 <label htmlFor="email" className="text-sm font-medium text-foreground mb-2 block">
-                  Email *
+                  {t('contact.form.email')} *
                 </label>
                 <Input
                   id="email"
@@ -187,7 +177,7 @@ export const Contact = () => {
                   type="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder="vas@email.hr"
+                  placeholder={t('contact.form.emailPlaceholder')}
                   className={`h-12 ${errors.email ? "border-destructive" : ""}`}
                 />
                 {errors.email && <p className="text-sm text-destructive mt-1">{errors.email}</p>}
@@ -196,14 +186,14 @@ export const Contact = () => {
 
             <div>
               <label htmlFor="phone" className="text-sm font-medium text-foreground mb-2 block">
-                Telefon *
+                {t('contact.form.phone')} *
               </label>
               <Input
                 id="phone"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                placeholder="+385"
+                placeholder={t('contact.form.phonePlaceholder')}
                 className={`h-12 ${errors.phone ? "border-destructive" : ""}`}
               />
               {errors.phone && <p className="text-sm text-destructive mt-1">{errors.phone}</p>}
@@ -211,14 +201,14 @@ export const Contact = () => {
 
             <div>
               <label htmlFor="message" className="text-sm font-medium text-foreground mb-2 block">
-                Poruka *
+                {t('contact.form.message')} *
               </label>
               <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Kako vam možemo pomoći?"
+                placeholder={t('contact.form.messagePlaceholder')}
                 className={`min-h-[150px] resize-none ${errors.message ? "border-destructive" : ""}`}
               />
               {errors.message && <p className="text-sm text-destructive mt-1">{errors.message}</p>}
@@ -230,7 +220,7 @@ export const Contact = () => {
               disabled={isSubmitting}
               className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity text-lg h-14 group disabled:opacity-50"
             >
-              {isSubmitting ? "Šalje se..." : "Pošaljite Upit"}
+              {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
               <Send className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
           </form>

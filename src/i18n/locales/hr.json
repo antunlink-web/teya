@@ -1,0 +1,92 @@
+{
+  "hero": {
+    "badge": "Ekskluzivni Teya Partner",
+    "title": "Transformirajte Svoje Poslovanje",
+    "subtitle": "Vodimo vas kroz digitalnu transformaciju s Teya plaćanjima. Moderna rješenja za moderne poduzetnike.",
+    "startToday": "Započnite Danas",
+    "learnMore": "Saznajte Više",
+    "reliability": "Pouzdanost Sustava",
+    "support": "Podrška Korisnicima",
+    "clients": "Zadovoljnih Klijenata"
+  },
+  "solutions": {
+    "badge": "Naša Rješenja",
+    "title": "Sve Što Vam Treba za Uspjeh",
+    "subtitle": "Cjelovita Teya platforma dizajnirana za rast vašeg poslovanja",
+    "terminals": {
+      "title": "Platni Terminali",
+      "description": "Moderna POS rješenja za bezgotovinska plaćanja. Prihvatite kartice, mobilna plaćanja i više."
+    },
+    "online": {
+      "title": "Online plaćanje",
+      "description": "Omogućite svojim kupcima plaćanje direktno na Vašoj web stranici ili web shopu."
+    },
+    "insights": {
+      "title": "Poslovni Uvidi",
+      "description": "Detaljne analize i izvještaji za bolje razumijevanje vašeg poslovanja."
+    },
+    "security": {
+      "title": "Sigurnost",
+      "description": "Najviša razina zaštite podataka i transakcija prema PCI DSS standardima."
+    },
+    "transactions": {
+      "title": "Brze Transakcije",
+      "description": "Instant potvrde i brzo procesiranje plaćanja za optimalno korisničko iskustvo."
+    },
+    "currency": {
+      "title": "Viševalutna Podrška",
+      "description": "Prihvaćajte plaćanja u različitim valutama i proširite svoj doseg."
+    }
+  },
+  "benefits": {
+    "badge": "Zašto Odabrati Nas",
+    "title": "Dizajnirano za biznis",
+    "subtitle": "Više prodaje, manje gnjavaže.",
+    "list": [
+      "Bez ugovorne obveze!",
+      "Bez mjesečne naknade!",
+      "Najniža provizija po transakciji",
+      "Napojnice",
+      "Ubrzajte proces kupnje",
+      "Novac sjeda na Vaš račun idući radni dan",
+      "Pay by link - slanje poveznica za plaćanje"
+    ],
+    "imageAlt": "Teya platni terminal"
+  },
+  "contact": {
+    "badge": "Kontaktirajte Nas",
+    "title": "Započnite Svoju Digitalnu Transformaciju",
+    "subtitle": "Naš tim je spreman odgovoriti na sva vaša pitanja i pomoći vam odabrati najbolje rješenje",
+    "phone": "Telefon",
+    "email": "Email",
+    "address": "Adresa",
+    "addressValue": "Tarska 26a, Zagreb, Hrvatska",
+    "form": {
+      "name": "Ime i Prezime",
+      "namePlaceholder": "Vaše ime",
+      "nameError": "Ime mora imati najmanje 2 znaka",
+      "email": "Email",
+      "emailPlaceholder": "vas@email.hr",
+      "emailError": "Unesite valjanu email adresu",
+      "phone": "Telefon",
+      "phonePlaceholder": "+385",
+      "phoneError": "Unesite valjan telefonski broj",
+      "message": "Poruka",
+      "messagePlaceholder": "Kako vam možemo pomoći?",
+      "messageError": "Poruka mora imati najmanje 10 znakova",
+      "submit": "Pošaljite Upit",
+      "submitting": "Šalje se...",
+      "successTitle": "Uspešno poslato!",
+      "successDescription": "Primili smo vašu poruku i odgovorićemo uskoro.",
+      "errorTitle": "Greška",
+      "errorDescription": "Došlo je do greške prilikom slanja. Molimo pokušajte kasnije.",
+      "formErrorTitle": "Greška u formi",
+      "formErrorDescription": "Molimo provjerite unesene podatke i pokušajte ponovno."
+    }
+  },
+  "footer": {
+    "description": "Ekskluzivni partner za Teya plaćanja u Hrvatskoj. Pomažemo poduzećima da ostvare svoj puni potencijal kroz moderna platna rješenja.",
+    "rights": "Sva prava pridržana.",
+    "madeWith": "Izgrađeno s ❤️ u Hrvatskoj"
+  }
+}

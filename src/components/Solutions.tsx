@@ -1,52 +1,55 @@
 import { Card } from "@/components/ui/card";
 import { CreditCard, Monitor, TrendingUp, Shield, Zap, Globe } from "lucide-react";
-
-const solutions = [
-  {
-    icon: CreditCard,
-    title: "Platni Terminali",
-    description: "Moderna POS rješenja za bezgotovinska plaćanja. Prihvatite kartice, mobilna plaćanja i više.",
-  },
-  {
-    icon: Monitor,
-    title: "Online plaćanje",
-    description: "Omogućite svojim kupcima plaćanje direktno na Vašoj web stranici ili web shopu.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Poslovni Uvidi",
-    description: "Detaljne analize i izvještaji za bolje razumijevanje vašeg poslovanja.",
-  },
-  {
-    icon: Shield,
-    title: "Sigurnost",
-    description: "Najviša razina zaštite podataka i transakcija prema PCI DSS standardima.",
-  },
-  {
-    icon: Zap,
-    title: "Brze Transakcije",
-    description: "Instant potvrde i brzo procesiranje plaćanja za optimalno korisničko iskustvo.",
-  },
-  {
-    icon: Globe,
-    title: "Viševalutna Podrška",
-    description: "Prihvaćajte plaćanja u različitim valutama i proširite svoj doseg.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export const Solutions = () => {
+  const { t } = useTranslation();
+
+  const solutions = [
+    {
+      icon: CreditCard,
+      title: t('solutions.terminals.title'),
+      description: t('solutions.terminals.description'),
+    },
+    {
+      icon: Monitor,
+      title: t('solutions.online.title'),
+      description: t('solutions.online.description'),
+    },
+    {
+      icon: TrendingUp,
+      title: t('solutions.insights.title'),
+      description: t('solutions.insights.description'),
+    },
+    {
+      icon: Shield,
+      title: t('solutions.security.title'),
+      description: t('solutions.security.description'),
+    },
+    {
+      icon: Zap,
+      title: t('solutions.transactions.title'),
+      description: t('solutions.transactions.description'),
+    },
+    {
+      icon: Globe,
+      title: t('solutions.currency.title'),
+      description: t('solutions.currency.description'),
+    },
+  ];
+
   return (
     <section className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-            Naša Rješenja
+            {t('solutions.badge')}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Sve Što Vam Treba za Uspjeh
+            {t('solutions.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Cjelovita Teya platforma dizajnirana za rast vašeg poslovanja
+            {t('solutions.subtitle')}
           </p>
         </div>
         

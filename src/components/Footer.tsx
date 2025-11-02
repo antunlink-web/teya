@@ -1,6 +1,8 @@
 import { Separator } from "@/components/ui/separator";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -12,7 +14,7 @@ export const Footer = () => {
               PrimeLink d.o.o.
             </h3>
             <p className="text-muted-foreground mb-4 max-w-md">
-              Ekskluzivni partner za Teya plaćanja u Hrvatskoj. Pomažemo poduzećima da ostvare svoj puni potencijal kroz moderna platna rješenja.
+              {t('footer.description')}
             </p>
           </div>
         </div>
@@ -20,8 +22,8 @@ export const Footer = () => {
         <Separator className="my-8" />
         
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>© {currentYear} PrimeLink d.o.o. Sva prava pridržana.</p>
-          <p>Izgrađeno s ❤️ u Hrvatskoj</p>
+          <p>© {currentYear} PrimeLink d.o.o. {t('footer.rights')}</p>
+          <p>{t('footer.madeWith')}</p>
         </div>
       </div>
     </footer>

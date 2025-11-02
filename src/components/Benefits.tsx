@@ -1,30 +1,24 @@
 import { Check } from "lucide-react";
 import teyaTerminal from "@/assets/teya-terminal.png";
-
-const benefits = [
-  "Bez ugovorne obveze!",
-  "Bez mjesečne naknade!",
-  "Najniža provizija po transakciji",
-  "Napojnice",
-  "Ubrzajte proces kupnje",
-  "Novac sjeda na Vaš račun idući radni dan",
-  "Pay by link - slanje poveznica za plaćanje",
-];
+import { useTranslation } from "react-i18next";
 
 export const Benefits = () => {
+  const { t } = useTranslation();
+  const benefits = t('benefits.list', { returnObjects: true }) as string[];
+
   return (
     <section className="py-24 bg-gradient-to-br from-primary/5 via-secondary/5 to-background">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
-              Zašto Odabrati Nas
+              {t('benefits.badge')}
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Dizajnirano za biznis
+              {t('benefits.title')}
             </h2>
             <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-              Više prodaje, manje gnjavaže.
+              {t('benefits.subtitle')}
             </p>
             
             <div className="space-y-4">
@@ -47,7 +41,7 @@ export const Benefits = () => {
             <div className="rounded-3xl overflow-hidden shadow-2xl w-3/5">
               <img 
                 src={teyaTerminal} 
-                alt="Teya payment terminal" 
+                alt={t('benefits.imageAlt')}
                 className="w-full h-auto"
               />
             </div>

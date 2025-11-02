@@ -1,0 +1,92 @@
+{
+  "hero": {
+    "badge": "Exclusive Teya Partner",
+    "title": "Transform Your Business",
+    "subtitle": "We guide you through digital transformation with Teya payments. Modern solutions for modern entrepreneurs.",
+    "startToday": "Start Today",
+    "learnMore": "Learn More",
+    "reliability": "System Reliability",
+    "support": "Customer Support",
+    "clients": "Happy Clients"
+  },
+  "solutions": {
+    "badge": "Our Solutions",
+    "title": "Everything You Need for Success",
+    "subtitle": "Complete Teya platform designed for your business growth",
+    "terminals": {
+      "title": "Payment Terminals",
+      "description": "Modern POS solutions for cashless payments. Accept cards, mobile payments and more."
+    },
+    "online": {
+      "title": "Online Payment",
+      "description": "Enable your customers to pay directly on your website or online shop."
+    },
+    "insights": {
+      "title": "Business Insights",
+      "description": "Detailed analytics and reports for better understanding of your business."
+    },
+    "security": {
+      "title": "Security",
+      "description": "Highest level of data and transaction protection according to PCI DSS standards."
+    },
+    "transactions": {
+      "title": "Fast Transactions",
+      "description": "Instant confirmations and fast payment processing for optimal user experience."
+    },
+    "currency": {
+      "title": "Multi-Currency Support",
+      "description": "Accept payments in different currencies and expand your reach."
+    }
+  },
+  "benefits": {
+    "badge": "Why Choose Us",
+    "title": "Designed for Business",
+    "subtitle": "More sales, less hassle.",
+    "list": [
+      "No contractual obligation!",
+      "No monthly fee!",
+      "Lowest commission per transaction",
+      "Tips",
+      "Speed up the purchase process",
+      "Money lands in your account the next business day",
+      "Pay by link - sending payment links"
+    ],
+    "imageAlt": "Teya payment terminal"
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "title": "Start Your Digital Transformation",
+    "subtitle": "Our team is ready to answer all your questions and help you choose the best solution",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "addressValue": "Tarska 26a, Zagreb, Croatia",
+    "form": {
+      "name": "Full Name",
+      "namePlaceholder": "Your name",
+      "nameError": "Name must be at least 2 characters",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "emailError": "Enter a valid email address",
+      "phone": "Phone",
+      "phonePlaceholder": "+385",
+      "phoneError": "Enter a valid phone number",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "messageError": "Message must be at least 10 characters",
+      "submit": "Send Inquiry",
+      "submitting": "Sending...",
+      "successTitle": "Successfully sent!",
+      "successDescription": "We received your message and will respond soon.",
+      "errorTitle": "Error",
+      "errorDescription": "An error occurred while sending. Please try again later.",
+      "formErrorTitle": "Form Error",
+      "formErrorDescription": "Please check the entered data and try again."
+    }
+  },
+  "footer": {
+    "description": "Exclusive partner for Teya payments in Croatia. We help businesses achieve their full potential through modern payment solutions.",
+    "rights": "All rights reserved.",
+    "madeWith": "Built with ❤️ in Croatia"
+  }
+}
