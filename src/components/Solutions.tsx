@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { CreditCard, Smartphone, TrendingUp, Shield, Zap, Globe } from "lucide-react";
+import { CreditCard, Monitor, TrendingUp, Shield, Zap, Globe } from "lucide-react";
 
 const solutions = [
   {
@@ -8,9 +8,9 @@ const solutions = [
     description: "Moderna POS rješenja za bezgotovinska plaćanja. Prihvatite kartice, mobilna plaćanja i više.",
   },
   {
-    icon: Smartphone,
+    icon: Monitor,
     title: "Online plaćanje",
-    description: "Prihvaćajte plaćanja bilo gdje s Teya Tap aplikacijom na vašem mobilnom uređaju.",
+    description: "Omogućite svojim kupcima plaćanje direktno na Vašoj web stranici ili web shopu.",
   },
   {
     icon: TrendingUp,
