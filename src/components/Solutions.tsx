@@ -9,7 +9,7 @@ const solutions = [
   },
   {
     icon: Smartphone,
-    title: "Mobilna Plaćanja",
+    title: "Online plaćanje",
     description: "Prihvaćajte plaćanja bilo gdje s Teya Tap aplikacijom na vašem mobilnom uređaju.",
   },
   {
