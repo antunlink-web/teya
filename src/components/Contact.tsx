@@ -106,7 +106,7 @@ export const Contact = () => {
   };
 
   return (
-    <section className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">
@@ -126,8 +126,8 @@ export const Contact = () => {
               <Phone className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold text-foreground mb-2">{t('contact.phone')}</h3>
-            <a href="tel:+385993261222" className="text-primary hover:underline text-lg">
-              +385 99 326 1222
+            <a href="tel:+385976850315" className="text-primary hover:underline text-lg">
+              +385 97 685 0315
             </a>
           </Card>
 
@@ -136,8 +136,8 @@ export const Contact = () => {
               <Mail className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-xl font-bold text-foreground mb-2">{t('contact.email')}</h3>
-            <a href="mailto:primelink@primelink.hr" className="text-primary hover:underline text-lg">
-              primelink@primelink.hr
+            <a href="mailto:teya@primelink.hr" className="text-primary hover:underline text-lg">
+              teya@primelink.hr
             </a>
           </Card>
 

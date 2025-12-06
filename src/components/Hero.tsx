@@ -34,6 +34,7 @@ export const Hero = () => {
               size="lg" 
               variant="secondary"
               className="bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl transition-all duration-300 group text-lg px-8"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               {t('hero.startToday')}
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
